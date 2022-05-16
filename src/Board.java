@@ -1,9 +1,9 @@
+
 import java.util.Arrays;
 
-public class Board {
+public class Board  {
     private String username;
     private int[][] board;
-    private int[][] oBoard;
     private int wins;
     private int size;
     public Board (int size, String name){
@@ -13,13 +13,21 @@ public class Board {
         {
             for(int c = 0;c < size;c++)
             {
-                board[r][c] = ((r-1) * 5) + (c+1);
-                oBoard[r][c] = ((r-1) * 5) + (c+1);
+                board[r][c] = (r * size) + (c+1);
             }
         }
         username = name;
-    }
 
+    }
+    public boolean checkPoint(int check){
+        for (int r = 0; r < size; r++){
+            for (int c = 0; c < size; c++){
+                if (board[r][c] == check){
+                    board[r][c] = 0;
+                }
+            }
+        }
+    }
     public boolean changePoint(int r,int c){
         board[r][c] = 0;
         return (checkWins() > 0);
