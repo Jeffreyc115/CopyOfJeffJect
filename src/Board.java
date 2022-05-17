@@ -2,11 +2,11 @@
 import java.util.Arrays;
 
 public class Board  {
-    private String username;
+
     private int[][] board;
     private int wins;
     private int size;
-    public Board (int size, String name){
+    public Board (int size){
         board = new int[size][size];
         this.size=size;
         for(int r = 0;r<size;r++)
@@ -16,7 +16,7 @@ public class Board  {
                 board[r][c] = (r * size) + (c+1);
             }
         }
-        username = name;
+
 
     }
     public boolean checkPoint(int check){
@@ -71,13 +71,6 @@ public class Board  {
     }
 
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public int getSize() {
         return size;

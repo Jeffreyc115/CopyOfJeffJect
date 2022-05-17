@@ -3,8 +3,23 @@ public class Manager {
     String name;
     int wins;
     int bS;
-public Manager (String name, int wins, int bS){
+    Board Board;
+    int diff;
+    // bS = Board Size
+    Wheel wheel;
+public Manager (String name, int wins, int bS, int diff){
     this.name=name;
+    this.wins=wins;
+    this.bS = bS;
+    this.diff = diff;
+
+}
+public void createBoard(int bS,int diff){
+    Board = new Board(bS);
+   wheel = Wheel(bS,diff)
+}
+public boolean spinWheel(Board Board){
+
 }
 
     public String getName() {
