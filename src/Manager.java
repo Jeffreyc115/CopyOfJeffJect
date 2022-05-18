@@ -7,6 +7,7 @@ public class Manager {
     int diff;
     // bS = Board Size
     Wheel wheel;
+    int spins = 0;
 public Manager (String name, int wins, int bS, int diff){
     this.name=name;
     this.wins=wins;
@@ -14,12 +15,25 @@ public Manager (String name, int wins, int bS, int diff){
     this.diff = diff;
 
 }
-public void createBoard(int bS,int diff){
+public void createBoard(){
     Board = new Board(bS);
-   wheel = Wheel(bS,diff)
+   wheel = new Wheel(bS,diff);
 }
 public boolean spinWheel(Board Board){
-
+    int ret = wheel.generateNumber();
+    spins++;
+    if (Board.checkPoint(ret)){
+        Board.changePoint(ret);
+        wins = Board.getWins();
+        return true;
+    }
+    return false;
+}
+public void printWins(){
+    System.out.println("You have " + wins + "Bingos on this board! Congratulations! it took you " + spins +"!");
+}
+public void printBoard(){
+    System.out.println(Board);
 }
 
     public String getName() {

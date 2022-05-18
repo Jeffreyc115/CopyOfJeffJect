@@ -23,15 +23,21 @@ public class Board  {
         for (int r = 0; r < size; r++){
             for (int c = 0; c < size; c++){
                 if (board[r][c] == check){
-                    board[r][c] = 0;
                     return true;
                 }
             }
         }
         return false;
     }
-    public boolean changePoint(int r,int c){
-        board[r][c] = 0;
+    public boolean changePoint(int check){
+        for (int r = 0; r < size; r++){
+            for (int c = 0; c < size; c++){
+                if (board[r][c] == check){
+                    board[r][c] = 0;
+                    return true;
+                }
+            }
+        }
         return (checkWins() > 0);
     }
     private int checkWins(){
