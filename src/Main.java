@@ -50,7 +50,25 @@ public class Main {
 
                 e.printStackTrace();
             }
-        Manager 
+
+//Code for later
+        String input;
+        if(containsName){
+            System.out.println("Welcome back " + "! You currently have " + " Wins! Would you like to keep playing or quit?");
+            Scanner sc =  new Scanner(System.in);
+            input = sc.nextLine();
+                while (input != "p" || input != "q"){
+                    System.out.println("Type \"p\" if you want to keep playing : ");
+                    System.out.println("Type \"q\" if you want to quit : ");
+                    if (input == "q") {
+                        //Save file all files
+                    }
+                    if (input == "p"){
+
+                        Manager roller = new Manager;
+                    }
+                }
+            }
 
         }
 
