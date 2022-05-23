@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Wheel {
-    private ArrayList<Integer> wheel;
+    private ArrayList<Integer> wheel = new ArrayList<Integer>();
     private Board board;
   public Wheel(int size, int diff){
 
@@ -14,7 +14,9 @@ public class Wheel {
 
     }
     public int generateNumber(){
-      return wheel.remove((int)Math.random()*wheel.size()+1);
+
+      return wheel.remove((int)(Math.random()*wheel.size())+1);
+
     }
 
 }

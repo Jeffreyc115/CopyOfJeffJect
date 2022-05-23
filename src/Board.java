@@ -83,6 +83,11 @@ public class Board  {
     }
 
    public void printBoard(){
-       System.out.println(Arrays.deepToString(board));
+
+        for (int[] a:board) {
+            for (int x : a)
+                System.out.print(x + " ");
+            System.out.println();
+        }
    }
 }
