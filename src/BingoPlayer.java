@@ -6,10 +6,11 @@ import java.io.File;
 import java.io.FileWriter;
 
 
-public class Main {
+public class BingoPlayer {
     public static void main(String[] args) {
 
         String name = "";
+        String back = "";
         ArrayList<Player> playerList= new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         try {// reads from file
@@ -33,17 +34,23 @@ public class Main {
         String para = "";
         System.out.println("Are you an existing user or a new user? \n \"e\" for existing user : \n \"n\" for a new user : ");
         String option = sc.nextLine();
-        while (option != "e" || option!= "n") {
-            if (option.equals("e")) {
+
+        while (!option.equals("e") || !option.equals("n")) {
+            int number = Integer.MAX_VALUE;
+
+               if (option.equals("e")) {
                 for (int i = 0; i < playerList.size(); i++) {
                     System.out.println((i + 1) + ". " + playerList.get(i).toString());
                 }
-                System.out.println("Which user do you want?");
-                int number = Integer.parseInt(sc.nextLine()) - 1;
+                while (number>playerList.size()-1) {
+                    System.out.println("Which user do you want?");
+                    number = Integer.parseInt(sc.nextLine()) - 1;
+                }
                 int wins = playerList.get(number).getWins();
                 name = playerList.get(number).getName();
-
-
+                totalWins = playerList.get(number).getWins();
+                back = "back";
+                break;
             } else if (option.equals("n")) {
                 while (!(name.length() > 0)) {
                     if ((!one)) System.out.println("Enter your name: ");
@@ -52,6 +59,7 @@ public class Main {
                     one = true;
                     playerList.add(new Player(name, 0));
                 }
+                break;
             }
         }
         while (size <= 3 || size > 15) {
@@ -72,7 +80,7 @@ public class Main {
         String input;
         boolean wantsToPlay = true;
         if (wantsToPlay) {
-            System.out.println("Welcome back " + "! You currently have " + totalWins + " Wins! Would you like to keep playing or quit?");
+            System.out.println("Welcome " + back + "! You currently have " + totalWins + " Wins! Would you like to keep playing or quit?");
             input = "";
             while (true) {
                 System.out.println("Type \"p\" if you want to keep playing : ");
@@ -97,9 +105,14 @@ public class Main {
                     System.out.println("You got the number " + roller.getNum() + "! It is going to be marked on your borad!");
                     roller.printBoard();
                     roller.setNum(0);
+                    if (roller.getWins() > 0){
+                        System.out.println("BINGO! You've won " + roller.getWins() + "Great Job!" );
+                        //maybe break here?
+                    }
                 }
                 else{
                     System.out.println("Your board didn't have the number " + roller.getNum() + ". Your board didn't change. ");
+                    roller.printBoard();
                     }
 
 

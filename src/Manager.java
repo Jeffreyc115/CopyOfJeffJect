@@ -9,6 +9,7 @@ public class Manager {
     // bS = Board Size
     Wheel wheel;
     int spins = 0;
+
 public Manager (String name, int bS, int diff){
     this.name=name;
     this.bS = bS;
@@ -62,5 +63,9 @@ public void printBoard(){
 
     public void setNum(int num) {
         this.num = num;
+    }
+
+    public int getWins() {
+        return board.getWins();
     }
 }
