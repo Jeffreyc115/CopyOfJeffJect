@@ -94,7 +94,7 @@ public class Board  {
         for (int[] a:board) {
             for (int x : a) {
                 if (x / 10 == 0) {
-                    System.out.print("  " + x + " ");
+                    System.out.print(" " + x + "  ");
                 }
                 else if(x/100 == 0)
                 System.out.print(" " + x + " ");
