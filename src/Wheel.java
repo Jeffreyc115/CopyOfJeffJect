@@ -15,7 +15,7 @@ public class Wheel {
     }
     public int generateNumber(){
 
-      return wheel.remove((int)(Math.random()*wheel.size())+1);
+      return wheel.remove((int)(Math.random()*wheel.size()));
 
     }
 

@@ -11,7 +11,7 @@ public class BingoPlayer {
 
         String name = "";
         String back = "";
-        ArrayList<Player> playerList= new ArrayList<>();
+        ArrayList<Player> playerList = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         try {// reads from file
             String filePath = "src/users";
@@ -19,11 +19,10 @@ public class BingoPlayer {
             while (fileRead.hasNext()) {
                 String temp = fileRead.nextLine();
                 String[] tArray = temp.split(";;");
-                playerList.add(new Player(tArray[0],Integer.parseInt(tArray[1])));
+                playerList.add(new Player(tArray[0], Integer.parseInt(tArray[1])));
             }
             fileRead.close();
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
@@ -34,18 +33,19 @@ public class BingoPlayer {
         String para = "";
         System.out.println("Are you an existing user or a new user? \n \"e\" for existing user : \n \"n\" for a new user : ");
         String option = sc.nextLine();
-
+        Player player = null;
         while (!option.equals("e") || !option.equals("n")) {
             int number = Integer.MAX_VALUE;
 
-               if (option.equals("e")) {
+            if (option.equals("e")) {
                 for (int i = 0; i < playerList.size(); i++) {
                     System.out.println((i + 1) + ". " + playerList.get(i).toString());
                 }
-                while (number>playerList.size()-1) {
+                while (number > playerList.size() - 1) {
                     System.out.println("Which user do you want?");
                     number = Integer.parseInt(sc.nextLine()) - 1;
                 }
+                player = playerList.get(number);
                 int wins = playerList.get(number).getWins();
                 name = playerList.get(number).getName();
                 totalWins = playerList.get(number).getWins();
@@ -57,12 +57,13 @@ public class BingoPlayer {
                     else System.out.println("Please enter a valid Name of Length greater than 1. :");
                     name = sc.nextLine();
                     one = true;
-                    playerList.add(new Player(name, 0));
+                    player = new Player(name, 0);
+                    playerList.add(player);
                 }
                 break;
             }
         }
-        while (size <= 3 || size > 15) {
+        while (size < 3 || size > 15) {
             System.out.println("Enter the Dimensions of your Bingo Board." + para);
             size = Integer.parseInt(sc.nextLine());
             para = "(Lowest number is 3 and highest number is 15)";
@@ -82,42 +83,47 @@ public class BingoPlayer {
         if (wantsToPlay) {
             System.out.println("Welcome " + back + "! You currently have " + totalWins + " Wins! Would you like to keep playing or quit?");
             input = "";
-            while (true) {
+            boolean userChoice = true;
+            while (userChoice) {
                 System.out.println("Type \"p\" if you want to keep playing : ");
                 System.out.println("Type \"q\" if you want to quit : ");
                 System.out.println(input);
                 input = sc.nextLine();
                 if (input.equals("q")) {
-                    File file = new File("src/users");
-                    try {
-                        FileWriter writer = new FileWriter(file);
-                        for (Player x :playerList){
-                            writer.write(x.getName() + ";;" + x.getWins());
-                        }
-                        writer.close();
-                        System.exit(0);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                   break;
                 }
                 if (input.equals("p")) {
-                if (roller.spinWheel(roller.getBoard())){
-                    System.out.println("You got the number " + roller.getNum() + "! It is going to be marked on your borad!");
-                    roller.printBoard();
-                    roller.setNum(0);
-                    if (roller.getWins() > 0){
-                        System.out.println("BINGO! You've won " + roller.getWins() + "Great Job!" );
-                        //maybe break here?
+                    if (roller.spinWheel(roller.getBoard())) {
+                        System.out.println("You got the number " + roller.getNum() + "! It is going to be marked on your borad!");
+                        roller.printBoard();
+                        roller.setNum(0);
+                        System.out.println(roller.getWins());
+                        if (roller.getWins() > 0) {
+                            System.out.println("BINGO! You've won " + roller.getWins() + " Time on that board! Great Job!");
+                            System.out.println("Congratulations! You've won! You have officially wasted your time playing this game! ");
+                            player.setWins(player.getWins() + roller.getWins());
+                            break;
+                        }
+                    }
+                    else {
+                        System.out.println("Your board didn't have the number " + roller.getNum() + ". Your board didn't change. ");
+                        roller.printBoard();
                     }
                 }
-                else{
-                    System.out.println("Your board didn't have the number " + roller.getNum() + ". Your board didn't change. ");
-                    roller.printBoard();
-                    }
 
-
-                }
             }
+            File file = new File("src/users");
+            try {
+                FileWriter writer = new FileWriter(file);
+                for (Player x : playerList) {
+                    writer.write(x.getName() + ";;" + x.getWins() + System.lineSeparator());
+                }
+                writer.close();
+                System.exit(0);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            sc.close();
         }
     }
 }

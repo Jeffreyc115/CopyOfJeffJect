@@ -34,6 +34,7 @@ public class Board  {
             for (int c = 0; c < size; c++){
                 if (board[r][c] == check){
                     board[r][c] = 0;
+                    checkWins();
                     return true;
                 }
             }
@@ -41,16 +42,21 @@ public class Board  {
         return (checkWins() > 0);
     }
     private int checkWins(){
-        boolean prev = true;
+        boolean prev = false;
         for (int r = 0; r < board.length; r++){
+            if (prev == true) wins++;
+            prev = true;
             for (int c = 0; c < board.length; c++){
                 if (board[r][c] > 0) prev = false;
 
             }
         }
         if (prev == true) wins++;
-        prev = true;
+        prev = false;
         for (int r = 0; r < board.length; r++){
+            if (prev == true) wins++;
+            prev = true;
+            prev = true;
             for (int c = 0; c < board.length; c++){
                 if (board[c][r] > 0) prev = false;
 
@@ -62,6 +68,7 @@ public class Board  {
                 if (board[i][i] != 0)prev = false;
             }
             if (prev == true)wins++;
+            prev = true;
             for (int i = 0; i < size;i++){
                 if (board[i][size-1] != 0) prev = false;
             }
@@ -85,8 +92,14 @@ public class Board  {
    public void printBoard(){
 
         for (int[] a:board) {
-            for (int x : a)
-                System.out.print(x + " ");
+            for (int x : a) {
+                if (x / 10 == 0) {
+                    System.out.print("  " + x + " ");
+                }
+                else if(x/100 == 0)
+                System.out.print(" " + x + " ");
+                else System.out.print(x + " ");
+            }
             System.out.println();
         }
    }
