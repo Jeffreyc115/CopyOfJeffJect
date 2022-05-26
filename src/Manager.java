@@ -41,18 +41,6 @@ public void printBoard(){
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getbS() {
-        return bS;
-    }
-
-    public void setbS(int bS) {
-        this.bS = bS;
-    }
-
     public Board getBoard() {
         return  board;
     }

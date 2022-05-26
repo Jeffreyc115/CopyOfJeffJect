@@ -76,20 +76,7 @@ public class Board  {
         }
         return wins;
     }
-    public int getWins (){
-        return wins;
-    }
-    public int[][] getBoard(){
-        return board;
-    }
-
-
-
-    public int getSize() {
-        return size;
-    }
-
-   public void printBoard(){
+    public void printBoard(){
 
         for (int[] a:board) {
             for (int x : a) {
@@ -97,11 +84,22 @@ public class Board  {
                     System.out.print(" " + x + "  ");
                 }
                 else if(x/100 == 0)
-                System.out.print(" " + x + " ");
+                    System.out.print(" " + x + " ");
                 else System.out.print(x + " ");
             }
             System.out.println();
         }
-   }
+    }
+    public int getWins (){
+        return wins;
+    }
+    public int[][] getBoard(){
+        return board;
+    }
+    public int getSize() {
+        return size;
+    }
+
+
 
 }
