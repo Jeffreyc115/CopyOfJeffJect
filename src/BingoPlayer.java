@@ -31,19 +31,25 @@ public class BingoPlayer {
         int diff = 0;
         int totalWins = 0;
         String para = "";
-        System.out.println("Are you an existing user or a new user? \n \"e\" for existing user : \n \"n\" for a new user : ");
-        String option = sc.nextLine();
+        System.out.print("Are you an existing user or a new user? \n \"e\" for existing user  \n \"n\" for a new user \n type here: ");
+        String option = "";
         Player player = null;
         while (!option.equals("e") || !option.equals("n")) {
             int number = Integer.MAX_VALUE;
-
+            option = sc.nextLine();
             if (option.equals("e")) {
                 for (int i = 0; i < playerList.size(); i++) {
                     System.out.println((i + 1) + ". " + playerList.get(i).toString());
                 }
                 while (number > playerList.size() - 1) {
                     System.out.println("Which user do you want?");
-                    number = Integer.parseInt(sc.nextLine()) - 1;
+                    try {
+                        number = Integer.parseInt(sc.nextLine()) - 1;
+                    }
+                    catch (NumberFormatException e)
+                    {
+
+                    }
                 }
                 player = playerList.get(number);
                 int wins = playerList.get(number).getWins();
@@ -65,19 +71,31 @@ public class BingoPlayer {
         }
         while (size < 3 || size > 15) {
             System.out.println("Enter the Dimensions of your Bingo Board." + para);
-            size = Integer.parseInt(sc.nextLine());
+            try {
+                size = Integer.parseInt(sc.nextLine());
+            }
+            catch (NumberFormatException e)
+            {
+                continue;
+            }
             para = "(Lowest number is 3 and highest number is 15)";
         }
-        System.out.println("Enter a difficulty level between 1 and 3 :");
-        diff = Integer.parseInt(sc.nextLine());
+
+       // diff = Integer.parseInt(sc.nextLine());
         while (!(diff > 0 && diff < 4)) {
             System.out.println("Please enter a valid number between 1 and 3 : ");
-            diff = Integer.parseInt(sc.nextLine());
+            try {
+                diff = Integer.parseInt(sc.nextLine());
+
+            }
+            catch (NumberFormatException e)
+            {
+                continue;
+            }
         }
         Manager roller = new Manager(name, size, diff);
         roller.createBoard();
 
-//Code for later
         String input;
         boolean wantsToPlay = true;
         if (wantsToPlay) {
@@ -85,9 +103,9 @@ public class BingoPlayer {
             input = "";
             boolean userChoice = true;
             while (userChoice) {
-                System.out.println("Type \"p\" if you want to keep playing : ");
-                System.out.println("Type \"q\" if you want to quit : ");
-                System.out.println(input);
+                System.out.println("Type \"p\" if you want to keep playing ");
+                System.out.println("Type \"q\" if you want to quit ");
+                System.out.print("Type your choice here or die :");
                 input = sc.nextLine();
                 if (input.equals("q")) {
                    break;
@@ -109,7 +127,7 @@ public class BingoPlayer {
                         roller.printBoard();
                     }
                 }
-
+            else System.out.println("That's not what you were supposed to type! Type \"p\" or \"q\"");
             }
             File file = new File("src/users");
             try {
