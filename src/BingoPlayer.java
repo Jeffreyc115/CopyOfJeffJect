@@ -105,7 +105,7 @@ public class BingoPlayer {
             while (userChoice) {
                 System.out.println("Type \"p\" if you want to keep playing ");
                 System.out.println("Type \"q\" if you want to quit ");
-                System.out.print("Type your choice here or die :");
+                System.out.print("Type your choice here or else :");
                 input = sc.nextLine();
                 if (input.equals("q")) {
                    break;
