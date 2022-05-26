@@ -97,10 +97,9 @@ public class BingoPlayer {
                         System.out.println("You got the number " + roller.getNum() + "! It is going to be marked on your borad!");
                         roller.printBoard();
                         roller.setNum(0);
-                        System.out.println(roller.getWins());
                         if (roller.getWins() > 0) {
                             System.out.println("BINGO! You've won " + roller.getWins() + " Time on that board! Great Job!");
-                            System.out.println("Congratulations! You've won! You have officially wasted your time playing this game! ");
+                            System.out.println("Congratulations! You've won! You have officially wasted your time playing this game! It only took you " + roller.getWheel().getSpins() + " Spins! ");
                             player.setWins(player.getWins() + roller.getWins());
                             break;
                         }

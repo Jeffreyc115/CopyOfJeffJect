@@ -68,4 +68,8 @@ public void printBoard(){
     public int getWins() {
         return board.getWins();
     }
+
+    public Wheel getWheel() {
+        return wheel;
+    }
 }

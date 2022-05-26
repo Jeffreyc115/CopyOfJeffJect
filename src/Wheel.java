@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Wheel {
     private ArrayList<Integer> wheel = new ArrayList<Integer>();
     private Board board;
+    private int spins;
   public Wheel(int size, int diff){
 
       createWheel(size,diff);
@@ -14,9 +15,12 @@ public class Wheel {
 
     }
     public int generateNumber(){
-
+      spins ++;
       return wheel.remove((int)(Math.random()*wheel.size()));
 
     }
 
+    public int getSpins() {
+        return spins;
+    }
 }
