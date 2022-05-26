@@ -69,7 +69,7 @@ public class BingoPlayer {
                 break;
             }
         }
-        while (size < 3 || size > 15) {
+        while (size < 3 || size > 30) {
             System.out.println("Enter the Dimensions of your Bingo Board." + para);
             try {
                 size = Integer.parseInt(sc.nextLine());
@@ -78,12 +78,12 @@ public class BingoPlayer {
             {
                 continue;
             }
-            para = "(Lowest number is 3 and highest number is 15)";
+            para = "(Lowest number is 3 and highest number is 30)";
         }
 
        // diff = Integer.parseInt(sc.nextLine());
-        while (!(diff > 0 && diff < 4)) {
-            System.out.println("Please enter a valid number between 1 and 3 : ");
+        while (!(diff > 0 && diff < 11)) {
+            System.out.println("Please enter a valid number between 1 and 10 : ");
             try {
                 diff = Integer.parseInt(sc.nextLine());
 
