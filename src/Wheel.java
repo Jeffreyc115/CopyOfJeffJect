@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Wheel {
     private ArrayList<Integer> wheel = new ArrayList<Integer>();
-    private Board board;
     private int spins;
   public Wheel(int size, int diff){
 

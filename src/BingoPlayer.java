@@ -34,7 +34,7 @@ public class BingoPlayer {
         System.out.print("Are you an existing user or a new user? \n \"e\" for existing user  \n \"n\" for a new user \n type here: ");
         String option = "";
         Player player = null;
-        while (!option.equals("e") || !option.equals("n")) {
+        while (true) {
             int number = Integer.MAX_VALUE;
             option = sc.nextLine();
             if (option.equals("e")) {
@@ -48,7 +48,7 @@ public class BingoPlayer {
                     }
                     catch (NumberFormatException e)
                     {
-
+                        continue;
                     }
                 }
                 player = playerList.get(number);
@@ -97,15 +97,15 @@ public class BingoPlayer {
         roller.createBoard();
 
         String input;
-        boolean wantsToPlay = true;
-        if (wantsToPlay) {
+
+        if (true) {
             System.out.println("Welcome " + back + "! You currently have " + totalWins + " Wins! Would you like to keep playing or quit?");
             input = "";
-            boolean userChoice = true;
-            while (userChoice) {
+
+            while (true) {
                 System.out.println("Type \"p\" if you want to keep playing ");
                 System.out.println("Type \"q\" if you want to quit ");
-                System.out.print("Type your choice here or else :");
+                System.out.print("Type your choice here or else  :");
                 input = sc.nextLine();
                 if (input.equals("q")) {
                    break;
