@@ -30,16 +30,12 @@ public boolean spinWheel(Board board){
     }
     return false;
 }
-public void printWins(){
-    System.out.println("You have " + wins + "Bingos on this board! Congratulations! it took you " + spins +"!");
-}
+
 public void printBoard(){
     board.printBoard();
 }
 
-    public String getName() {
-        return name;
-    }
+
 
     public Board getBoard() {
         return  board;

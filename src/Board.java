@@ -56,7 +56,6 @@ public class Board  {
         for (int r = 0; r < board.length; r++){
             if (prev == true) wins++;
             prev = true;
-            prev = true;
             for (int c = 0; c < board.length; c++){
                 if (board[c][r] > 0) prev = false;
 
@@ -93,12 +92,7 @@ public class Board  {
     public int getWins (){
         return wins;
     }
-    public int[][] getBoard(){
-        return board;
-    }
-    public int getSize() {
-        return size;
-    }
+
 
 
 

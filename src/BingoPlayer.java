@@ -52,7 +52,6 @@ public class BingoPlayer {
                     }
                 }
                 player = playerList.get(number);
-                int wins = playerList.get(number).getWins();
                 name = playerList.get(number).getName();
                 totalWins = playerList.get(number).getWins();
                 back = "back";
